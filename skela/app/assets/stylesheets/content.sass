@@ -1,0 +1,100 @@
+a
+  text-decoration: none
+body
+  position: fixed
+
+form.text
+  width: 100%
+
+#container
+  overflow-y: scroll
+  transition: all .45s ease-in-out
+  max-height: 100%
+  &.hasHeader
+    max-height: 870px / 969px * 100%
+
+  padding: 2em 0
+
+
+
+  &.hidden
+    opacity: 0
+
+  .hidden
+    display: none
+
+  textarea
+    font-family: arial
+    width: 100%
+
+  a[data-method="delete"]
+    color: red
+
+  tr
+    transition: opacity .4s ease-in-out
+
+  tr.invisible
+    opacity: 0
+  tr.hidden
+    display: none
+
+body
+  background-color: #fff
+  color: #333
+  font-family: verdana, arial, helvetica, sans-serif
+  font-size: 13px
+  line-height: 18px
+
+p, ol, ul, td
+  font-family: verdana, arial, helvetica, sans-serif
+  font-size: 13px
+  line-height: 18px
+
+pre
+  background-color: #eee
+  padding: 10px
+  font-size: 11px
+
+a
+  color: #427fed
+  &:hover
+    text-decoration: underline
+
+div
+  &.field, &.actions
+    margin-bottom: 10px
+
+.field_with_errors
+  padding: 2px
+  background-color: red
+  display: table
+
+#error_explanation
+  width: 450px
+  border: 2px solid red
+  padding: 7px 7px 0
+  margin-bottom: 20px
+  background-color: #f0f0f0
+
+  h2
+    text-align: left
+    font-weight: bold
+    padding: 5px 5px 5px 15px
+    font-size: 12px
+    margin: -7px -7px 0
+    background-color: #c00
+    color: #fff
+
+  ul li
+    font-size: 12px
+    list-style: square
+ul.horizontal li
+  display: inline-block
+
+label
+  cursor: pointer
+
+ul
+  padding: 0
+  li
+    list-style-type: none
