@@ -89,18 +89,11 @@ $(document).ready(function() {
       if (data.results.length === 1 ) {
         var paragraph = transcript.children().last(),
           text = data.results[0].alternatives[0].transcript || '';
-        console.log(text);
         text = text.trim().split(" ").slice(-1);
-        if(text == "commander")
+        console.log(text);
+        if(text == "commander"){
           alert("HEY! YOU DID IT!");
-        // //Capitalize first word
-        // text = text.charAt(0).toUpperCase() + text.substring(1);
-        // // if final results, append a new paragraph
-        // if (data.results[0].final){
-        //   text = text.trim() + '.';
-        //   $('<p></p>').appendTo(transcript);
-        // }
-        // paragraph.text(text);
+        }
       }
     }
     transcript.show();
