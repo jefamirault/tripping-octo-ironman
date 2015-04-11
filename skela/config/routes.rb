@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get '/', to: 'commands#index'
 
   post 'commands/execute', to: 'commands#execute'
 

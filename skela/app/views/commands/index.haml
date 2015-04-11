@@ -1,0 +1,14 @@
+%head
+	%script{:type => "text/javascript", :src => "/commandr/browser-detect.js"}
+	%script{:type => "text/javascript", :src => "/commandr/socket.io.js"}
+	%script{:type => "text/javascript", :src => "/commandr/speech-recognizer.js"}
+	%script{:type => "text/javascript", :src => "/commandr/jquery-1.11.1.min.js"}
+	%script{:type => "text/javascript", :src => "/commandr/demo.js"}
+
+%body{:style => 'width:100%;margin:0'}
+	.nav{:style => 'height:50px;background:gray;font-size:40px;font-weight:bold;'}
+		COMMANDER
+	.micButton{:style => 'background:red'}
+		CLICK ME FOR MICROPHONE
+	#text
+	

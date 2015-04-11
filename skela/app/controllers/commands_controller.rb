@@ -1,4 +1,8 @@
 class CommandsController < ApplicationController
+  def index
+    render :layout => false
+  end
+
   def execute
     @command = Command.new
 
