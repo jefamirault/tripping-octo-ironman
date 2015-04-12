@@ -7429,6 +7429,11 @@ window.Commandr = (function(){
         this.registered.push({"string":arguments[i],"command":function(){$(arguments[arguments.length-1]).click()}});
       }
     },
+    registerScroll: function() {
+      for(var i = 0; i < arguments.length - 2; i++) {
+        this.registered.push({"string":arguments[i],"command":function(){$('html,body').animate({scrollTop: $(arguments[arguments.length-1]).offset().top})}});
+      }
+    },
     parse: function(string){
       // iterate through the registered functions, and do the ones that match
       for(i=0;i<this.registered.length;i++){
