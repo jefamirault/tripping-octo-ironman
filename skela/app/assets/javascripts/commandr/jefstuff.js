@@ -1,21 +1,13 @@
-Commandr.register("hello",navigateGames);
 Commandr.register("play game",navigateGames);
-Commandr.register("a one", squareOne);
-Commandr.register("square one", squareOne);
-Commandr.register("square won", squareOne);
-Commandr.register("square to", squareTwo);
-Commandr.register("square two", squareTwo);
-Commandr.register("square too", squareTwo);
-Commandr.register("square three", squareThree);
-Commandr.register("square four", squareFour);
-Commandr.register("square for", squareFour);
-Commandr.register("square fore", squareFour);
-Commandr.register("square five", squareFive);
-Commandr.register("square six", squareSix);
-Commandr.register("square seven", squareSeven);
-Commandr.register("square eight", squareEight);
-Commandr.register("square ate", squareEight);
-Commandr.register("square nine", squareNine);
+Commandr.register("top left", "square one", squareOne);
+Commandr.register("top middle","square to", squareTwo);
+Commandr.register("top right", "square three", squareThree);
+Commandr.register("middle left", "square four", squareFour);
+Commandr.register("middle middle", "center", "square five", squareFive);
+Commandr.register("middle right", "square six", squareSix);
+Commandr.register("bottom left", "square seven", squareSeven);
+Commandr.register("bottom middle","square eight", squareEight);
+Commandr.register("bottom right", "square nine", squareNine);
 
 
 function navigateGames(){

@@ -20,6 +20,9 @@
   margin: 0
   padding: 0
 
+  &.disabled
+    pointer-events: none
+
 .tic_tac_toe_square
   display: inline-block
   height: 196px
@@ -64,6 +67,9 @@
     color: blue
     &:after
       content: 'O'
+
+  &.highlight
+    background-color: rgba(73, 255, 54, 0.37)
 
 .tic_tac_toe_board[data-turn='1']
   .tic_tac_toe_square:not(.X):not(.O)

@@ -9,7 +9,7 @@ root = exports ? this
 #################
 
 $(document).on 'click', '.tic_tac_toe_square', ->
-  if $(this).hasClass 'X' || $(this).hasClass 'O'
+  if $(this).hasClass('X') || $(this).hasClass('O')
     return false
   if player_ones_turn()
     $(this).addClass 'X'
@@ -18,8 +18,8 @@ $(document).on 'click', '.tic_tac_toe_square', ->
   else
     console.log "error - neither player one's nor player two's turn"
 
+  checkVictory()
   increment_turn '.tic_tac_toe_board'
-
 
 player_ones_turn = ->
   turn_number = parseInt $('.tic_tac_toe_board').attr 'data-turn'
@@ -33,6 +33,42 @@ player_twos_turn = ->
 increment_turn = (board_selector) ->
   turn_number = parseInt $(board_selector).attr 'data-turn'
   $(board_selector).attr('data-turn', (turn_number + 1) % 2)
+
+likeSquares = (index1, index2, index3) ->
+  board = $('.tic_tac_toe_board')
+  one = $(board.find('div')[index1])
+  two = $(board.find('div')[index2])
+  three = $(board.find('div')[index3])
+  if one.hasClass 'X'
+    if two.hasClass('X') && three.hasClass('X')
+      disableBoard()
+      one.addClass 'highlight'
+      two.addClass 'highlight'
+      three.addClass 'highlight'
+      alert 'Player 1 wins!'
+  else if one.hasClass 'O'
+    if two.hasClass ('O') && three.hasClass('O')
+      disableBoard()
+      one.addClass 'highlight'
+      two.addClass 'highlight'
+      three.addClass 'highlight'
+      alert 'Player 2 wins!'
+
+checkVictory = ->
+#   rows
+  likeSquares(0,1,2)
+  likeSquares(3,4,5)
+  likeSquares(6,7,8)
+#  columns
+  likeSquares(0,3,6)
+  likeSquares(1,4,7)
+  likeSquares(2,5,8)
+#  diagonals
+  likeSquares(0,4,8)
+  likeSquares(2,4,6)
+
+disableBoard = ->
+  $('.tic_tac_toe_board').addClass 'disabled'
 
 ###########
 ## Hi-Lo ##
