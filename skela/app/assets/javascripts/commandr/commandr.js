@@ -11,7 +11,7 @@ window.Commandr = (function(){
     parse: function(string){
       // iterate through the registered functions, and do the ones that match
       for(i=0;i<this.registered.length;i++){
-        if(this.registered[i].string.indexOf(string) == 0){
+        if(("commander " + this.registered[i].string) == string){
           this.registered[i].command.call(window, string);
         }
       }
@@ -22,4 +22,7 @@ window.Commandr = (function(){
 }());
 
 console.log("starting registrations");
-Commandr.register("commander",function(){console.log("register worked");});
+Commandr.register("hello",function(){console.log("register worked (hello)");});
+Commandr.register("goodbye",function(){console.log("register worked (goodbye)");});
+Commandr.register("spencer rules",function(){console.log("register worked (spencer rules)");});
+

@@ -70,16 +70,6 @@ $(document).ready(function() {
     showResult(data);
   };
 
-  // micButton.click(function() {
-  //   if (!recording) {
-  //     speech.start();
-  //   } else {
-  //     speech.stop();
-  //     micButton.removeClass('recording');
-  //     micText.text('Processing speech');
-  //   }
-  // });
-
   function showResult(data) {
     //console.log(data);
     //if there are transcripts
@@ -89,8 +79,7 @@ $(document).ready(function() {
       if (data.results.length === 1 ) {
         var paragraph = transcript.children().last(),
           text = data.results[0].alternatives[0].transcript || '';
-        text = text.trim().split(" ").slice(-1);
-        console.log(text);
+          text = text.trim();
         if(data.results[0].final)
           Commandr.parse(text);
       }
