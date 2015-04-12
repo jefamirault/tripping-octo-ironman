@@ -7465,6 +7465,7 @@ $(function(){
   var banner = $('<div></div>').addClass('commander-banner');
   var spoken = $('<div></div>').addClass('commander-spoken');
   var questionmark = $('<div></div>').addClass('commander-help');
+  var toggler = $('<span></span>').addClass('commander-toggler').addClass('down');
 
   icon.append(pic);
   questionmark.append(pic2);
@@ -7473,6 +7474,12 @@ $(function(){
   textContainer.append(spoken);
   container.append(textContainer);
   container.append(questionmark);
+  toggler.text("▲");
+  container.append(toggler);
+
+  toggler.css({
+    
+  });
 
   container.css({
     position: 'fixed',
