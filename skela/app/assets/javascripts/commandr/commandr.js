@@ -5,17 +5,17 @@ window.Commandr = (function(){
     registered: [],
     register: function(){
       // expects any number of strings, followed by a function
-      for(var i = 0; i < arguments.length - 2; i++) {
+      for(var i = 0; i < arguments.length - 1; i++) {
         this.registered.push({"string":arguments[i],"command":arguments[arguments.length-1]});
       }
     },
     registerLink: function() {
-      for(var i = 0; i < arguments.length - 2; i++) {
+      for(var i = 0; i < arguments.length - 1; i++) {
         this.registered.push({"string":arguments[i],"command":function(){$(arguments[arguments.length-1]).click()}});
       }
     },
     registerScroll: function() {
-      for(var i = 0; i < arguments.length - 2; i++) {
+      for(var i = 0; i < arguments.length - 1; i++) {
         this.registered.push({"string":arguments[i],"command":function(){$('html,body').animate({scrollTop: $(arguments[arguments.length-1]).offset().top})}});
       }
     },
@@ -33,7 +33,12 @@ window.Commandr = (function(){
       for(var i=0; i< this.registered.length; i++) {
         console.log(this.registered[i].string);
       }
+    },
+    speak: function(string) {
+      $('#textArea').val(string);
+      $('.speak-button').trigger('click');
     }
+
   };
 
   return commandr;
@@ -62,28 +67,30 @@ $(function(){
   container.append(questionmark);
   toggler_up.text("▲");
   toggler_down.text("▼");
-  
+
   container.append(toggler_up);
   container.append(toggler_down);
 
   toggler_up.css({
     position: 'absolute',
-    bottom: '-27px',
+    bottom: '-23px',
     width: '16px',
     left: '0',
     right: '0',
     margin: 'auto',
+    fontSize: '25px',
     display: 'none',
     cursor: 'pointer'
   });
 
   toggler_down.css({
     position: 'absolute',
-    bottom: '-27px',
+    bottom: '-23px',
     width: '16px',
     left: '0',
     right: '0',
     margin: 'auto',
+    fontSize: '25px',
     display: 'none',
     cursor: 'pointer'
   });
@@ -175,4 +182,7 @@ $(function(){
 
 console.log("starting registrations");
 Commandr.register("goodbye",function(){console.log("register worked (goodbye)");});
+Commandr.register("help",function(){
+    Commandr.speak("Say Commander Goodbye");
+});
 Commandr.register("spencer rules",function(){console.log("register worked (spencer rules)");});

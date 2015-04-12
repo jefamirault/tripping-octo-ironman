@@ -7477,28 +7477,30 @@ $(function(){
   container.append(questionmark);
   toggler_up.text("▲");
   toggler_down.text("▼");
-  
+
   container.append(toggler_up);
   container.append(toggler_down);
 
   toggler_up.css({
     position: 'absolute',
-    bottom: '-27px',
+    bottom: '-23px',
     width: '16px',
     left: '0',
     right: '0',
     margin: 'auto',
+    fontSize: '25px',
     display: 'none',
     cursor: 'pointer'
   });
 
   toggler_down.css({
     position: 'absolute',
-    bottom: '-27px',
+    bottom: '-23px',
     width: '16px',
     left: '0',
     right: '0',
     margin: 'auto',
+    fontSize: '25px',
     display: 'none',
     cursor: 'pointer'
   });

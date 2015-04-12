@@ -107,49 +107,11 @@ $(document).ready(function() {
     transcript.hide();
   }
 
-  //Sample audios
-  var audio1 = 'audio/sample1.wav',
-    audio2 = 'audio/sample2.wav';
-
   function _error(xhr) {
     $('.loading').hide();
     displayError('Error processing the request, please try again.');
   }
 
-  function stopSounds() {
-    $('.sample2').get(0).pause();
-    $('.sample2').get(0).currentTime = 0;
-    $('.sample1').get(0).pause();
-    $('.sample1').get(0).currentTime = 0;
-  }
-
-  $('.audio1').click(function() {
-    $('.audio-staged audio').attr('src', audio1);
-    stopSounds();
-    $('.sample1').get(0).play();
-  });
-
-  $('.audio2').click(function() {
-    $('.audio-staged audio').attr('src', audio2);
-    stopSounds();
-    $('.sample2').get(0).play();
-  });
-
-  $('.send-api-audio1').click(function() {
-    transcriptAudio(audio1);
-  });
-
-  $('.send-api-audio2').click(function() {
-    transcriptAudio(audio2);
-  });
-
-  function showAudioResult(data){
-    $('.loading').hide();
-    transcript.empty();
-    $('<p></p>').appendTo(transcript);
-    showResult(data);
-  }
-  // submit event
   function transcriptAudio(audio) {
     $('.loading').show();
     $('.error').hide();
