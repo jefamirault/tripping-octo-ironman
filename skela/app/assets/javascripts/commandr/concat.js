@@ -7445,8 +7445,8 @@ window.Commandr = (function(){
       return null;
     },
     help: function() {
-      for(var i=0; i< this.registered.length; i++) {
-        console.log(this.registered[i].string);
+      for(var i=0; i< this.registered.length; i++){
+          console.log(this.registered[i].string);
       }
     },
     speak: function(string) {
@@ -7470,6 +7470,10 @@ $(function(){
   var banner = $('<div></div>').addClass('commander-banner');
   var spoken = $('<div></div>').addClass('commander-spoken');
   var questionmark = $('<div></div>').addClass('commander-help');
+  var audio = $('<audio></audio>').attr('autoplay','true').attr('preload','true').attr('autobuffer', 'true')
+      .attr('controls', 'true').addClass('audio').css({display:'none'});
+  var speakText = $('<textarea></textarea>').attr('id', 'textArea').attr('name', 'text').css({display:'none'});
+  var speakButton = $('<div></div>').addClass('speak-button').css({display:'none'});
 
   icon.append(pic);
   questionmark.append(pic2);
@@ -7478,6 +7482,9 @@ $(function(){
   textContainer.append(spoken);
   container.append(textContainer);
   container.append(questionmark);
+  container.append(audio);
+  container.append(speakText);
+  container.append(speakButton);
 
   container.css({
     position: 'fixed',
@@ -7515,7 +7522,7 @@ $(function(){
 
   spoken.css({
     width: '175px',
-    height: '10px',
+    height: '32px',
     display: 'inline-block',
     fontWeight: 'normal'
   });
@@ -7526,7 +7533,8 @@ $(function(){
     marginLeft: '30px',
     marginTop: '7px',
     fontSize: '14px',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    overflow: 'hidden'
   });
 
   questionmark.css({
@@ -7542,19 +7550,16 @@ $(function(){
 
   $('body').prepend(container);
 
-  banner.text("Say \"Commander...\"");
+  banner.text("Say \"Commander Help\"");
   spoken.text("");
 });
 
 
 
 console.log("starting registrations");
-Commandr.register("goodbye",function(){console.log("register worked (goodbye)");});
-Commandr.register("help",function(){
-    Commandr.speak("Say Commander Goodbye");
-});
-Commandr.register("scroll down", "go down", function(){$('body').animate({scrollTop: $('body').scrollTop()+ parseInt(screen.height - screen.height*0.15)}, 800);});
-Commandr.register("scroll up", "go up", function(){$('body').animate({scrollTop: $('body').scrollTop()+ parseInt(screen.height + screen.height*0.15)}, 800);});
+Commandr.register("help", Commandr.help.bind(Commandr));
+Commandr.register("scroll down", "go down", function(){$('body').animate({scrollTop: $('body').scrollTop()+ parseInt(scshreen.height - screen.height*0.15)}, 800);});
+Commandr.register("scroll up", "go up", function(){$('body').animate({scrollTop: $('body').scrollTop()- (screen.height + parseInt(screen.height*0.15))}, 800);});
 Commandr.register("spencer rules",function(){console.log("register worked (spencer rules)");});
 /**
  * Copyright 2014 IBM Corp. All Rights Reserved.

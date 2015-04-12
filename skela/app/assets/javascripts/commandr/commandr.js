@@ -143,6 +143,6 @@ $(function(){
 
 console.log("starting registrations");
 Commandr.register("help", Commandr.help.bind(Commandr));
-Commandr.register("scroll down", "go down", function(){$('body').animate({scrollTop: $('body').scrollTop()+ parseInt(screen.height - screen.height*0.15)}, 800);});
+Commandr.register("scroll down", "go down", function(){$('body').animate({scrollTop: $('body').scrollTop()+ parseInt(scshreen.height - screen.height*0.15)}, 800);});
 Commandr.register("scroll up", "go up", function(){$('body').animate({scrollTop: $('body').scrollTop()- (screen.height + parseInt(screen.height*0.15))}, 800);});
 Commandr.register("spencer rules",function(){console.log("register worked (spencer rules)");});
