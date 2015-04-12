@@ -3,6 +3,7 @@ window.Commandr = (function(){
 
   var commandr = {
     registered: [],
+    uberRegsitered: [],
     register: function(){
       // expects any number of strings, followed by a function
       for(var i = 0; i < arguments.length - 1; i++) {
@@ -14,9 +15,17 @@ window.Commandr = (function(){
         this.registered.push({"string":arguments[i],"command":function(){$(arguments[arguments.length-1]).click()}});
       }
     },
+    registerToAll: function(fn) {
+        this.uberRegistered.push(fn);
+    },
+    alertUberListeners: function(str) {
+        for(var i=0;i < this.uberRegistered.length;i++) {
+            this.uberRegistered[i].call(window, str);
+        }
+    },
     registerScroll: function() {
       for(var i = 0; i < arguments.length - 1; i++) {
-        this.registered.push({"string":arguments[i],"command":function(){$('html,body').animate({scrollTop: $(arguments[arguments.length-1]).offset().top})}});
+        this.registered.push({"string":arguments[i],"command":function(){$('body').animate({scrollTop: $(arguments[arguments.length-1]).offset().top})}});
       }
     },
     parse: function(string){

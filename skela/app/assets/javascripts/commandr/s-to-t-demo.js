@@ -83,6 +83,7 @@ $(document).ready(function() {
           text = data.results[0].alternatives[0].transcript || '';
           text = text.trim();
           $('.commander-spoken').text(text); 
+          Commandr.alertUberListeners(text);
           if(!parseMatched && Commandr.parse(text)){
             parseMatched = true;
           } else if(data.results[0].final){
