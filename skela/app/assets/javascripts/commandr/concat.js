@@ -7420,17 +7420,17 @@ window.Commandr = (function(){
     registered: [],
     register: function(){
       // expects any number of strings, followed by a function
-      for(var i = 0; i < arguments.length - 2; i++) {
+      for(var i = 0; i < arguments.length - 1; i++) {
         this.registered.push({"string":arguments[i],"command":arguments[arguments.length-1]});
       }
     },
     registerLink: function() {
-      for(var i = 0; i < arguments.length - 2; i++) {
+      for(var i = 0; i < arguments.length - 1; i++) {
         this.registered.push({"string":arguments[i],"command":function(){$(arguments[arguments.length-1]).click()}});
       }
     },
     registerScroll: function() {
-      for(var i = 0; i < arguments.length - 2; i++) {
+      for(var i = 0; i < arguments.length - 1; i++) {
         this.registered.push({"string":arguments[i],"command":function(){$('html,body').animate({scrollTop: $(arguments[arguments.length-1]).offset().top})}});
       }
     },
@@ -7448,7 +7448,12 @@ window.Commandr = (function(){
       for(var i=0; i< this.registered.length; i++) {
         console.log(this.registered[i].string);
       }
+    },
+    speak: function(string) {
+      $('#textArea').val(string);
+      $('.speak-button').trigger('click');
     }
+
   };
 
   return commandr;
@@ -7465,8 +7470,6 @@ $(function(){
   var banner = $('<div></div>').addClass('commander-banner');
   var spoken = $('<div></div>').addClass('commander-spoken');
   var questionmark = $('<div></div>').addClass('commander-help');
-  var toggler_up = $('<span></span>').addClass('commander-toggler-up');
-  var toggler_down = $('<span></span>').addClass('commander-toggler-down');
 
   icon.append(pic);
   questionmark.append(pic2);
@@ -7475,51 +7478,6 @@ $(function(){
   textContainer.append(spoken);
   container.append(textContainer);
   container.append(questionmark);
-  toggler_up.text("▲");
-  toggler_down.text("▼");
-
-  container.append(toggler_up);
-  container.append(toggler_down);
-
-  toggler_up.css({
-    position: 'absolute',
-    bottom: '-23px',
-    width: '16px',
-    left: '0',
-    right: '0',
-    margin: 'auto',
-    fontSize: '25px',
-    display: 'none',
-    cursor: 'pointer'
-  });
-
-  toggler_down.css({
-    position: 'absolute',
-    bottom: '-23px',
-    width: '16px',
-    left: '0',
-    right: '0',
-    margin: 'auto',
-    fontSize: '25px',
-    display: 'none',
-    cursor: 'pointer'
-  });
-  var show_toggler = function() {toggler_up.toggle();}
-  container.hover(show_toggler);
-
-  toggler_up.click(function(){
-    toggler_up.hide();
-    container.off("hover", show_toggler);
-    container.animate({top: '-'+container.height()+'px'}, 'slow');
-    toggler_down.show();
-  });
-
-  toggler_down.click(function(){
-    toggler_down.hide();
-    toggler_up.show();
-    container.hover(show_toggler);
-    container.animate({top:0}, 'slow');
-  });
 
   container.css({
     position: 'fixed',
@@ -7592,6 +7550,9 @@ $(function(){
 
 console.log("starting registrations");
 Commandr.register("goodbye",function(){console.log("register worked (goodbye)");});
+Commandr.register("help",function(){
+    Commandr.speak("Say Commander Goodbye");
+});
 Commandr.register("spencer rules",function(){console.log("register worked (spencer rules)");});
 /**
  * Copyright 2014 IBM Corp. All Rights Reserved.
@@ -7702,49 +7663,11 @@ $(document).ready(function() {
     transcript.hide();
   }
 
-  //Sample audios
-  var audio1 = 'audio/sample1.wav',
-    audio2 = 'audio/sample2.wav';
-
   function _error(xhr) {
     $('.loading').hide();
     displayError('Error processing the request, please try again.');
   }
 
-  function stopSounds() {
-    $('.sample2').get(0).pause();
-    $('.sample2').get(0).currentTime = 0;
-    $('.sample1').get(0).pause();
-    $('.sample1').get(0).currentTime = 0;
-  }
-
-  $('.audio1').click(function() {
-    $('.audio-staged audio').attr('src', audio1);
-    stopSounds();
-    $('.sample1').get(0).play();
-  });
-
-  $('.audio2').click(function() {
-    $('.audio-staged audio').attr('src', audio2);
-    stopSounds();
-    $('.sample2').get(0).play();
-  });
-
-  $('.send-api-audio1').click(function() {
-    transcriptAudio(audio1);
-  });
-
-  $('.send-api-audio2').click(function() {
-    transcriptAudio(audio2);
-  });
-
-  function showAudioResult(data){
-    $('.loading').hide();
-    transcript.empty();
-    $('<p></p>').appendTo(transcript);
-    showResult(data);
-  }
-  // submit event
   function transcriptAudio(audio) {
     $('.loading').show();
     $('.error').hide();
@@ -7761,4 +7684,89 @@ $(document).ready(function() {
     });
   }
 
+});
+/**
+ * Copyright 2014 IBM Corp. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/*global $:false */
+
+'use strict';
+
+$(document).ready(function() {
+  var audio = $('.audio').get(0),
+    textArea = $('#textArea');
+
+  var textChanged = false,
+    spanishText = 'El servicio de Voz a Texto utiliza la tecnología de síntesis de voz de IBM para convertir texto en Inglés o Español en una señal de audio. El audio es enviado de vuelta al cliente con un retraso mínimo. El servicio puede ser accedido a través de una interfaz REST.',
+    englishText = 'The Text to Speech service uses IBM\'s speech synthesis capabilities to convert English or Spanish text to an audio signal. The audio is streamed back to the client with minimal delay. The service can be accessed via a REST interface.';
+
+  $('#textArea').val(englishText);
+
+  $('#voice').change(function(){
+    if (!textChanged) {
+      if ($(this).val() === 'VoiceEsEsEnrique')
+        $('#textArea').val(spanishText);
+      else
+        $('#textArea').val(englishText);
+    }
+  });
+
+  $('#textArea').change(function(){
+    textChanged = true;
+  });
+
+  // IE and Safari not supported disabled Speak button
+  if ($('body').hasClass('ie') || $('body').hasClass('safari')) {
+    $('.speak-button').prop('disabled', true);
+  }
+
+  if ($('.speak-button').prop('disabled')) {
+    $('.ie-speak .arrow-box').show();
+  }
+
+  $('.audio').on('error', function () {
+    $('.result').hide();
+    $('errorMgs').text('Error processing the request.');
+    $('.errorMsg').css('color','red');
+    $('.error').show();
+  });
+
+  $('.audio').on('loadeddata', function () {
+    $('.result').show();
+    $('.error').hide();
+  });
+
+  $('.speak-button').click(function() {
+    $('.result').hide();
+    audio.pause();
+
+    $('#textArea').focus();
+    if (validText(textArea.val())) {
+      audio.setAttribute('src','http://text-to-speech-demo.mybluemix.net/synthesize?' + $('#textArea').serialize() + '&voice=VoiceEnUsMichael');
+    }
+  });
+
+  function validText(text) {
+    if ($.trim(text)) {
+      $('.error').hide();
+      return true;
+    } else {
+      $('.errorMsg').text('Please enter the text you would like to synthesize in the text window.');
+      $('.errorMsg').css('color','#00b2ef');
+      $('.error').show();
+      return false;
+    }
+  }
 });
