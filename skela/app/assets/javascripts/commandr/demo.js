@@ -91,9 +91,7 @@ $(document).ready(function() {
           text = data.results[0].alternatives[0].transcript || '';
         text = text.trim().split(" ").slice(-1);
         console.log(text);
-        if(text == "commander"){
-          alert("HEY! YOU DID IT!");
-        }
+        Commandr.parse(text);
       }
     }
     transcript.show();
