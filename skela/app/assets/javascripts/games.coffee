@@ -29,9 +29,8 @@ player_twos_turn = ->
   turn_number = parseInt $('.tic_tac_toe_board').attr 'data-turn'
   turn_number % 2 == 0
 
-
+# TODO increment turn might be broken when using voice commands
 increment_turn = (board_selector) ->
-
   turn_number = parseInt $(board_selector).attr 'data-turn'
   $(board_selector).attr('data-turn', (turn_number + 1) % 2)
 
