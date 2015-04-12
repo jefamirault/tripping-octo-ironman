@@ -19,6 +19,11 @@ window.Commandr = (function(){
         }
       }
       return null;
+    },
+    help: function() {
+      for(var i=0; i< this.registered.length; i++) {
+        console.log(this.registered[i].string);
+      }
     }
   };
 
@@ -71,7 +76,8 @@ $(function(){
   });
 
   pic.css({
-    height: '45px'
+    height: '45px',
+    margin: 0
   });
 
   banner.css({
