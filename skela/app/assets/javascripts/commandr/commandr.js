@@ -55,6 +55,10 @@ $(function(){
   var banner = $('<div></div>').addClass('commander-banner');
   var spoken = $('<div></div>').addClass('commander-spoken');
   var questionmark = $('<div></div>').addClass('commander-help');
+  var audio = $('<audio></audio>').attr('autoplay','true').attr('preload','true').attr('autobuffer', 'true')
+      .attr('controls', 'true').addClass('audio').css({display:'none'});
+  var speakText = $('<textarea></textarea>').attr('id', 'textArea').attr('name', 'text').css({display:'none'});
+  var speakButton = $('<div></div>').addClass('speak-button').css({display:'none'});
 
   icon.append(pic);
   questionmark.append(pic2);
@@ -63,6 +67,9 @@ $(function(){
   textContainer.append(spoken);
   container.append(textContainer);
   container.append(questionmark);
+  container.append(audio);
+  container.append(speakText);
+  container.append(speakButton);
 
   container.css({
     position: 'fixed',
