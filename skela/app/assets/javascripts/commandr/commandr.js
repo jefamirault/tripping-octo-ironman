@@ -87,7 +87,7 @@ $(function(){
 
   textContainer.css({
     display: 'inline-block',
-    width: '200px',
+    width: '175px',
     marginLeft: '30px',
     marginTop: '7px',
     fontSize: '14px',
