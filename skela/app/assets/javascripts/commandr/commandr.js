@@ -30,8 +30,8 @@ window.Commandr = (function(){
       return null;
     },
     help: function() {
-      for(var i=0; i< this.registered.length; i++) {
-        console.log(this.registered[i].string);
+      for(var i=0; i< this.registered.length; i++){
+          console.log(this.registered[i].string);
       }
     },
     speak: function(string) {
@@ -135,17 +135,14 @@ $(function(){
 
   $('body').prepend(container);
 
-  banner.text("Say \"Commander...\"");
+  banner.text("Say \"Commander Help\"");
   spoken.text("");
 });
 
 
 
 console.log("starting registrations");
-Commandr.register("goodbye",function(){console.log("register worked (goodbye)");});
-Commandr.register("help",function(){
-    Commandr.speak("Say Commander Goodbye");
-});
+Commandr.register("help", Commandr.help.bind(Commandr));
 Commandr.register("scroll down", "go down", function(){$('body').animate({scrollTop: $('body').scrollTop()+ parseInt(screen.height - screen.height*0.15)}, 800);});
-Commandr.register("scroll up", "go up", function(){$('body').animate({scrollTop: $('body').scrollTop()+ parseInt(screen.height + screen.height*0.15)}, 800);});
+Commandr.register("scroll up", "go up", function(){$('body').animate({scrollTop: $('body').scrollTop()- (screen.height + parseInt(screen.height*0.15))}, 800);});
 Commandr.register("spencer rules",function(){console.log("register worked (spencer rules)");});
