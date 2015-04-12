@@ -7553,6 +7553,8 @@ Commandr.register("goodbye",function(){console.log("register worked (goodbye)");
 Commandr.register("help",function(){
     Commandr.speak("Say Commander Goodbye");
 });
+Commandr.register("scroll down", "go down", function(){$('body').animate({scrollTop: $('body').scrollTop()+ parseInt(screen.height - screen.height*0.15)}, 800);});
+Commandr.register("scroll up", "go up", function(){$('body').animate({scrollTop: $('body').scrollTop()+ parseInt(screen.height + screen.height*0.15)}, 800);});
 Commandr.register("spencer rules",function(){console.log("register worked (spencer rules)");});
 /**
  * Copyright 2014 IBM Corp. All Rights Reserved.
