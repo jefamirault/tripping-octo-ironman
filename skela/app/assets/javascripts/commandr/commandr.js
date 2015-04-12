@@ -55,8 +55,6 @@ $(function(){
   var banner = $('<div></div>').addClass('commander-banner');
   var spoken = $('<div></div>').addClass('commander-spoken');
   var questionmark = $('<div></div>').addClass('commander-help');
-  var toggler_up = $('<span></span>').addClass('commander-toggler-up');
-  var toggler_down = $('<span></span>').addClass('commander-toggler-down');
 
   icon.append(pic);
   questionmark.append(pic2);
@@ -65,51 +63,6 @@ $(function(){
   textContainer.append(spoken);
   container.append(textContainer);
   container.append(questionmark);
-  toggler_up.text("▲");
-  toggler_down.text("▼");
-
-  container.append(toggler_up);
-  container.append(toggler_down);
-
-  toggler_up.css({
-    position: 'absolute',
-    bottom: '-23px',
-    width: '16px',
-    left: '0',
-    right: '0',
-    margin: 'auto',
-    fontSize: '25px',
-    display: 'none',
-    cursor: 'pointer'
-  });
-
-  toggler_down.css({
-    position: 'absolute',
-    bottom: '-23px',
-    width: '16px',
-    left: '0',
-    right: '0',
-    margin: 'auto',
-    fontSize: '25px',
-    display: 'none',
-    cursor: 'pointer'
-  });
-  var show_toggler = function() {toggler_up.toggle();}
-  container.hover(show_toggler);
-
-  toggler_up.click(function(){
-    toggler_up.hide();
-    container.off("hover", show_toggler);
-    container.animate({top: '-'+container.height()+'px'}, 'slow');
-    toggler_down.show();
-  });
-
-  toggler_down.click(function(){
-    toggler_down.hide();
-    toggler_up.show();
-    container.hover(show_toggler);
-    container.animate({top:0}, 'slow');
-  });
 
   container.css({
     position: 'fixed',
