@@ -91,7 +91,8 @@ $(document).ready(function() {
           text = data.results[0].alternatives[0].transcript || '';
         text = text.trim().split(" ").slice(-1);
         console.log(text);
-        Commandr.parse(text);
+        if(data.results[0].final)
+          Commandr.parse(text);
       }
     }
     transcript.show();
