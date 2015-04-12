@@ -30,13 +30,18 @@ $(function(){
   var icon = $('<div></div>').addClass('commander-icon');
   var textContainer = $('<div></div>').addClass('commander-text-container');
   var pic = $('<img />').attr("src", "http://images.clipartpanda.com/radio-microphone-vector-RiGK4RoiL.png");
+  var pic2 = $('<img />').attr("src", "http://png-4.findicons.com/files/icons/2768/freecns_cumulus/16/164_questionmark.png");
   var banner = $('<div></div>').addClass('commander-banner');
   var spoken = $('<div></div>').addClass('commander-spoken');
+  var questionmark = $('<div></div>').addClass('commander-help');
+
   icon.append(pic);
+  questionmark.append(pic2);
   container.append(icon);
   textContainer.append(banner);
   textContainer.append(spoken);
   container.append(textContainer);
+  container.append(questionmark);
 
   container.css({
     position: 'fixed',
@@ -85,6 +90,17 @@ $(function(){
     marginTop: '7px',
     fontSize: '14px',
     fontWeight: 'bold'
+  });
+
+  questionmark.css({
+    display: 'inline',
+    verticalAlign: 'top',
+    cursor: 'pointer'
+  });
+
+  pic2.css({
+    verticalAlign: 'top',
+    marginTop: '3px'
   });
 
   $('body').prepend(container);
