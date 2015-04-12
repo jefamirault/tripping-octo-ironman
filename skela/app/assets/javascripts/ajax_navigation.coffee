@@ -30,7 +30,7 @@ this.navigate = (section) ->
     $('#header_right nav').closest('nav').find("a:not("+ selector + ")").removeClass('selected');
     $(selector).addClass 'selected'
 
-  cloak '#container'
+#  cloak '#container'
   window.history.replaceState( {} , '', '/' + section );
 
 

@@ -22,13 +22,20 @@ window.Commandr = (function(){
 }());
 
 console.log("starting registrations");
-Commandr.register("hello",function(){console.log("register worked (hello)");});
+//Commandr.register("hello",function(){console.log("register worked (hello)");});
 Commandr.register("goodbye",function(){console.log("register worked (goodbye)");});
 Commandr.register("spencer rules",function(){console.log("register worked (spencer rules)");});
-Commandr.register("games",navigateGames);
+Commandr.register("hello",navigateGames);
+Commandr.register("play game",navigateGames);
 
 
 function navigateGames(){
-  navigate('games')
+  $.ajax({
+    url: '/games/tic_tac_toe',
+    dataType: 'script'
+  });
+  //debugger;
+  navigate('games');
+  console.log('wtf');
 }
 

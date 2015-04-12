@@ -7,5 +7,9 @@ class GamesController < ApplicationController
   end
 
   def tic_tac_toe
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 end
