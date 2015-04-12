@@ -107,7 +107,7 @@ $(function(){
 
   spoken.css({
     width: '175px',
-    height: '10px',
+    height: '32px',
     display: 'inline-block',
     fontWeight: 'normal'
   });
@@ -118,7 +118,8 @@ $(function(){
     marginLeft: '30px',
     marginTop: '7px',
     fontSize: '14px',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    overflow: 'hidden'
   });
 
   questionmark.css({
