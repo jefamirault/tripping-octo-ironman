@@ -100,7 +100,8 @@ $(function(){
     borderBottomRightRadius: '15px',
     borderBottomLeftRadius: '15px',
     boxShadow: '2px 2px 1px #888, 2px -2px 1px #888',
-    zIndex: '50'
+    zIndex: '50',
+    opacity: '0.8'
   });
 
   icon.css({
