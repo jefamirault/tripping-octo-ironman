@@ -7418,9 +7418,11 @@ window.Commandr = (function(){
 
   var commandr = {
     registered: [],
-    register: function(string, command){
-      // expects string to be a word, and command to be afunction
-      this.registered.push({"string":string,"command":command});
+    register: function(){
+      // expects any number of strings, followed by a function
+      for(var i = 0; i < arguments.length - 2; i++) {
+        this.registered.push({"string":arguments[i],"command":arguments[arguments.length-1]});
+      }
     },
 
     parse: function(string){
