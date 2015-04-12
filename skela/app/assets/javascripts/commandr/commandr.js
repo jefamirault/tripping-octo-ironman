@@ -79,7 +79,7 @@ $(function(){
   });
 
   spoken.css({
-    width: '200px',
+    width: '175px',
     height: '10px',
     display: 'inline-block',
     fontWeight: 'normal'
