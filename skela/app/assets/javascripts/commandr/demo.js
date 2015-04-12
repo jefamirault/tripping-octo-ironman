@@ -33,7 +33,7 @@ $(document).ready(function() {
   // Service
   var recording = false,
     speech = new SpeechRecognizer({
-      ws: 'http://speech-to-text-nodejs-cciollaro-1223.mybluemix.net/',
+      ws: 'http://commandr.mybluemix.net/',
       model: 'WatsonModel'
     });
   speech.start();
@@ -70,8 +70,10 @@ $(document).ready(function() {
     showResult(data);
   };
 
+  var parseMatched = false;
+
   function showResult(data) {
-    //console.log(data);
+    // console.log(data);
     //if there are transcripts
     if (data.results && data.results.length > 0) {
 
@@ -81,8 +83,11 @@ $(document).ready(function() {
           text = data.results[0].alternatives[0].transcript || '';
           text = text.trim();
           $('.commander-spoken').text(text); 
-        if(data.results[0].final)
-          Commandr.parse(text);
+          if(!parseMatched && Commandr.parse(text)){
+            parseMatched = true;
+          } else if(data.results[0].final){
+            parseMatched = false;
+          }
       }
     }
     transcript.show();
@@ -153,7 +158,7 @@ $(document).ready(function() {
     $('.upload-form').hide();
     // Grab all form data
     $.ajax({
-      url: 'http://speech-to-text-nodejs-cciollaro-1223.mybluemix.net/',
+      url: 'http://commandr.mybluemix.net/',
       type: 'POST',
       data: $('.upload-form').serialize(),
       success: showAudioResult,

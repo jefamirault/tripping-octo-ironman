@@ -13,8 +13,10 @@ window.Commandr = (function(){
       for(i=0;i<this.registered.length;i++){
         if(("commander " + this.registered[i].string) == string){
           this.registered[i].command.call(window, string);
+          return string;
         }
       }
+      return null;
     }
   };
 
@@ -27,7 +29,7 @@ $(function(){
   var container = $('<div></div>').addClass('commander');
   var icon = $('<div></div>').addClass('commander-icon');
   var textContainer = $('<div></div>').addClass('commander-text-container');
-  var pic = $('<img />').attr("src", "http://png-4.findicons.com/files/icons/2579/iphone_icons/40/radio_microphone.png");
+  var pic = $('<img />').attr("src", "http://images.clipartpanda.com/radio-microphone-vector-RiGK4RoiL.png");
   var banner = $('<div></div>').addClass('commander-banner');
   var spoken = $('<div></div>').addClass('commander-spoken');
   icon.append(pic);
@@ -41,22 +43,28 @@ $(function(){
     top: 0,
     left: 0,
     right: 0,
-    backgroundColor: '#ddd',
+    backgroundColor: '#FFD700',
     width: '300px',
     height: '75px',
-    border: '2px solid #999',
+    border: '3px solid black',
     borderTop: 'none',
     marginLeft: 'auto',
     marginRight: 'auto',
-    borderBottomRightRadius: '20px',
-    borderBottomLeftRadius: '20px',
-    boxShadow: '2px 2px 1px #888'
+    borderBottomRightRadius: '15px',
+    borderBottomLeftRadius: '15px',
+    boxShadow: '2px 2px 1px #888, 2px -2px 1px #888',
+    zIndex: '50'
   });
 
   icon.css({
     display: 'inline-block',
     marginLeft: '20px',
-    marginTop: '2px'
+    verticalAlign: 'top',
+    marginTop: '10px'
+  });
+
+  pic.css({
+    height: '45px'
   });
 
   banner.css({
@@ -66,18 +74,22 @@ $(function(){
   spoken.css({
     width: '200px',
     height: '10px',
-    display: 'inline-block'
+    display: 'inline-block',
+    fontWeight: 'normal'
   });
 
   textContainer.css({
     display: 'inline-block',
     width: '200px',
-    marginLeft: '30px'
+    marginLeft: '30px',
+    marginTop: '7px',
+    fontSize: '14px',
+    fontWeight: 'bold'
   });
 
   $('body').prepend(container);
 
-  banner.text("Commander...");
+  banner.text("Say \"Commander...\"");
   spoken.text("");
 });
 
