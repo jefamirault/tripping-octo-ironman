@@ -1,3 +1,5 @@
+root = exports ? this
+
 $(document).on 'click', '#header_left', ->
   navigate 'welcome'
 
@@ -22,7 +24,7 @@ $(document).on 'click', '#purchases_link', ->
 $(document).on 'click', '#login_link', ->
   navigate '/'
 
-navigate = (section) ->
+this.navigate = (section) ->
   if section != '/'
     selector = '#' + section + '_link'
     $('#header_right nav').closest('nav').find("a:not("+ selector + ")").removeClass('selected');
