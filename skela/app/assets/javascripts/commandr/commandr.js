@@ -98,6 +98,7 @@ $(function(){
 
   pic.css({
     height: '45px',
+    width: '45px',
     margin: 0
   });
 
@@ -130,7 +131,9 @@ $(function(){
 
   pic2.css({
     verticalAlign: 'top',
-    marginTop: '3px'
+    marginTop: '3px',
+    height: '16px',
+    width: '16px'
   });
 
   $('body').prepend(container);
