@@ -4,6 +4,7 @@ window.Commandr = (function(){
   var commandr = {
     registered: [],
     uberRegistered: [],
+    finalUberRegistered: [],
     register: function(){
       // expects any number of strings, followed by a function
       for(var i = 0; i < arguments.length - 1; i++) {
@@ -19,10 +20,19 @@ window.Commandr = (function(){
     registerToAll: function(fn) {
         this.uberRegistered.push(fn);
     },
+    registerToFinals: function(fn) {
+        this.finalUberRegistered.push(fn);
+    },
     alertUberListeners: function(str) {
         for(var i=0;i < this.uberRegistered.length;i++) {
             this.uberRegistered[i].call(window, str);
         }
+    },
+    alertFinalListeners: function(str) {
+        for(var i=0;i < this.finalUberRegistered.length;i++) {
+            this.finalUberRegistered[i].call(window, str);
+        }
+
     },
     registerScroll: function() {
       for(var i = 0; i < arguments.length - 1; i++) {
@@ -101,7 +111,7 @@ $(function(){
     borderBottomRightRadius: '15px',
     borderBottomLeftRadius: '15px',
     boxShadow: '2px 2px 1px #888, 2px -2px 1px #888',
-    zIndex: '50',
+    zIndex: '1001',
     opacity: '0.8'
   });
 

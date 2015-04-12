@@ -84,6 +84,9 @@ $(document).ready(function() {
           text = text.trim();
           $('.commander-spoken').text(text); 
           Commandr.alertUberListeners(text);
+          if(data.results[0].final) {
+            Commandr.alertFinalListeners(text);
+          }
           if(!parseMatched && Commandr.parse(text)){
             parseMatched = true;
           } else if(data.results[0].final){
