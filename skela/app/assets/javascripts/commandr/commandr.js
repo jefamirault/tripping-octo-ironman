@@ -37,6 +37,12 @@ window.Commandr = (function(){
     speak: function(string) {
       $('#textArea').val(string);
       $('.speak-button').trigger('click');
+    },
+    initMarquee: function() {
+        for(var i = 0; i < this.registered.length; i++) {
+            console.log(this.registered[i].string);
+            $('.marquee').html($('.marquee').html() + this.registered[i].string + "\"<br/>");
+        }
     }
 
   };
@@ -51,22 +57,21 @@ $(function(){
   var icon = $('<div></div>').addClass('commander-icon');
   var textContainer = $('<div></div>').addClass('commander-text-container');
   var pic = $('<img />').attr("src", "http://images.clipartpanda.com/radio-microphone-vector-RiGK4RoiL.png");
-  var pic2 = $('<img />').attr("src", "http://png-4.findicons.com/files/icons/2768/freecns_cumulus/16/164_questionmark.png");
   var banner = $('<div></div>').addClass('commander-banner');
   var spoken = $('<div></div>').addClass('commander-spoken');
-  var questionmark = $('<div></div>').addClass('commander-help');
   var audio = $('<audio></audio>').attr('autoplay','true').attr('preload','true').attr('autobuffer', 'true')
       .attr('controls', 'true').addClass('audio').css({display:'none'});
   var speakText = $('<textarea></textarea>').attr('id', 'textArea').attr('name', 'text').css({display:'none'});
   var speakButton = $('<div></div>').addClass('speak-button').css({display:'none'});
+  var marquee = $('<marquee></marquee>').addClass('marquee').attr('behavior', 'scroll')
+                            .attr('direction', 'up').attr('scrollamount', '1').attr('scrolldelay', '150');
 
   icon.append(pic);
-  questionmark.append(pic2);
   container.append(icon);
   textContainer.append(banner);
+  textContainer.append(marquee);
   textContainer.append(spoken);
   container.append(textContainer);
-  container.append(questionmark);
   container.append(audio);
   container.append(speakText);
   container.append(speakButton);
@@ -77,7 +82,7 @@ $(function(){
     left: 0,
     right: 0,
     backgroundColor: '#ddd',
-    width: '300px',
+    width: '400px',
     height: '75px',
     border: '3px solid black',
     borderTop: 'none',
@@ -98,7 +103,7 @@ $(function(){
 
   pic.css({
     height: '45px',
-    width: '45px',
+    width: '27px',
     margin: 0
   });
 
@@ -107,7 +112,7 @@ $(function(){
   });
 
   spoken.css({
-    width: '175px',
+    width: '250px',
     height: '32px',
     display: 'inline-block',
     fontWeight: 'normal'
@@ -115,7 +120,7 @@ $(function(){
 
   textContainer.css({
     display: 'inline-block',
-    width: '175px',
+    width: '300px',
     marginLeft: '30px',
     marginTop: '7px',
     fontSize: '14px',
@@ -123,29 +128,25 @@ $(function(){
     overflow: 'hidden'
   });
 
-  questionmark.css({
-    display: 'inline',
-    verticalAlign: 'top',
-    cursor: 'pointer'
+  marquee.css({
+    height: '12px',
+    width: '150px',
+    overflow: 'hidden'
   });
 
-  pic2.css({
-    verticalAlign: 'top',
-    marginTop: '3px',
-    height: '16px',
-    width: '16px'
-  });
-
+  spoken.text("");
+  banner.append(marquee);
+  banner.prepend("Say \"Commander ");
   $('body').prepend(container);
 
-  banner.text("Say \"Commander Help\"");
-  spoken.text("");
+
 });
-
-
 
 console.log("starting registrations");
 Commandr.register("help", Commandr.help.bind(Commandr));
 Commandr.register("scroll down", "go down", function(){$('body').animate({scrollTop: $('body').scrollTop()+ parseInt(screen.height - screen.height*0.15)}, 800);});
 Commandr.register("scroll up", "go up", function(){$('body').animate({scrollTop: $('body').scrollTop()- (screen.height + parseInt(screen.height*0.15))}, 800);});
 Commandr.register("spencer rules",function(){console.log("register worked (spencer rules)");});
+$(function(){
+    Commandr.initMarquee();
+});
