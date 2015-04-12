@@ -51,21 +51,6 @@ ActiveRecord::Schema.define(version: 20150411202914) do
     t.string   "target_version"
   end
 
-  create_table "items", force: :cascade do |t|
-    t.string  "title"
-    t.string  "description"
-    t.boolean "checked"
-    t.integer "creator_id"
-    t.integer "list_id"
-  end
-
-  create_table "lists", force: :cascade do |t|
-    t.string  "title"
-    t.text    "description"
-    t.boolean "active"
-    t.integer "creator_id"
-  end
-
   create_table "purchases", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "title"

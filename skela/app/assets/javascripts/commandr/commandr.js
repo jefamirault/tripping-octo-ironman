@@ -43,7 +43,7 @@ $(function(){
     top: 0,
     left: 0,
     right: 0,
-    backgroundColor: '#FFD700',
+    backgroundColor: '#ddd',
     width: '300px',
     height: '75px',
     border: '3px solid black',
