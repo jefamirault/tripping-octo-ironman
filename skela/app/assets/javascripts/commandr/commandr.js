@@ -3,7 +3,7 @@ window.Commandr = (function(){
 
   var commandr = {
     registered: [],
-    uberRegsitered: [],
+    uberRegistered: [],
     register: function(){
       // expects any number of strings, followed by a function
       for(var i = 0; i < arguments.length - 1; i++) {
