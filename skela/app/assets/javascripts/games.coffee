@@ -39,15 +39,16 @@ likeSquares = (index1, index2, index3) ->
   one = $(board.find('div')[index1])
   two = $(board.find('div')[index2])
   three = $(board.find('div')[index3])
-  if one.hasClass 'X'
+  debugger
+  if one.hasClass('X')
     if two.hasClass('X') && three.hasClass('X')
       disableBoard()
       one.addClass 'highlight'
       two.addClass 'highlight'
       three.addClass 'highlight'
       alert 'Player 1 wins!'
-  else if one.hasClass 'O'
-    if two.hasClass ('O') && three.hasClass('O')
+  else if one.hasClass('O')
+    if two.hasClass('O') && three.hasClass('O')
       disableBoard()
       one.addClass 'highlight'
       two.addClass 'highlight'
