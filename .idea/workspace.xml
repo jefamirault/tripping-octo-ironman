@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6201b755-a768-414b-8dfa-d3673ae2d0de" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/skela/app/views/games/_tic_tac_toe.html.haml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/skela/app/views/games/tic_tac_toe.js.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/skela/app/assets/javascripts/ajax_navigation.coffee" afterPath="$PROJECT_DIR$/skela/app/assets/javascripts/ajax_navigation.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/skela/app/assets/javascripts/commandr/commandr.js" afterPath="$PROJECT_DIR$/skela/app/assets/javascripts/commandr/commandr.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/skela/app/controllers/games_controller.rb" afterPath="$PROJECT_DIR$/skela/app/controllers/games_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/skela/app/views/games/tic_tac_toe.html.haml" afterPath="$PROJECT_DIR$/skela/app/views/games/tic_tac_toe.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="tripping-octo-ironman.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -68,8 +62,8 @@
       <file leaf-file-name="commandr.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/skela/app/assets/javascripts/commandr/commandr.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6743421" vertical-offset="184" max-vertical-offset="846">
-              <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.52960527" vertical-offset="470" max-vertical-offset="1674">
+              <caret line="44" column="22" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -164,8 +158,8 @@
         <option value="$PROJECT_DIR$/skela/app/views/games/_tic_tac_toe.html.haml" />
         <option value="$PROJECT_DIR$/skela/app/views/games/tic_tac_toe.html.haml" />
         <option value="$PROJECT_DIR$/skela/app/controllers/games_controller.rb" />
-        <option value="$PROJECT_DIR$/skela/app/assets/javascripts/commandr/commandr.js" />
         <option value="$PROJECT_DIR$/skela/app/views/games/tic_tac_toe.js.erb" />
+        <option value="$PROJECT_DIR$/skela/app/assets/javascripts/commandr/commandr.js" />
       </list>
     </option>
   </component>
@@ -1009,8 +1003,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/skela/app/assets/javascripts/commandr/commandr.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6743421" vertical-offset="184" max-vertical-offset="846">
-          <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.52960527" vertical-offset="470" max-vertical-offset="1674">
+          <caret line="44" column="22" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
           <folding />
         </state>
       </provider>
