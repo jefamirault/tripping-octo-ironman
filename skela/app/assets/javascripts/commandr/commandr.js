@@ -78,13 +78,12 @@ $(function(){
   $('body').prepend(container);
 
   banner.text("Commander...");
-  spoken.text("bananas");
+  spoken.text("");
 });
 
 
 
 console.log("starting registrations");
-//Commandr.register("hello",function(){console.log("register worked (hello)");});
 Commandr.register("goodbye",function(){console.log("register worked (goodbye)");});
 Commandr.register("spencer rules",function(){console.log("register worked (spencer rules)");});
 Commandr.register("hello",navigateGames);

@@ -80,6 +80,7 @@ $(document).ready(function() {
         var paragraph = transcript.children().last(),
           text = data.results[0].alternatives[0].transcript || '';
           text = text.trim();
+          $('.commander-spoken').text(text); 
         if(data.results[0].final)
           Commandr.parse(text);
       }
