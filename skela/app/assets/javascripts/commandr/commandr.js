@@ -9,7 +9,11 @@ window.Commandr = (function(){
         this.registered.push({"string":arguments[i],"command":arguments[arguments.length-1]});
       }
     },
-
+    registerLink: function() {
+      for(var i = 0; i < arguments.length - 2; i++) {
+        this.registered.push({"string":arguments[i],"command":function(){$(arguments[arguments.length-1]).click()}});
+      }
+    },
     parse: function(string){
       // iterate through the registered functions, and do the ones that match
       for(i=0;i<this.registered.length;i++){
